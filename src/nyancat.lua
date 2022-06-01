@@ -20,11 +20,9 @@ palette['%']  = colors.pink -- Pink cheeks */
 
 local old_monitor = term.redirect(monitor)
 for i, frame in ipairs(frames) do
-    for x, row_str in ipairs(frame) do
-        y = 1
-        for pixel_char, #row_str do
-            paintutils.drawPixel(x, y, palette[pixel_char]) 
-            y += 1
+    for y, row_str in ipairs(frame) do
+        for x, #row_str do
+            paintutils.drawPixel(x, y, palette[row_str:sub(x, x)]) 
         end
     end
 end
